@@ -2,29 +2,29 @@
 
 We use $\epsilon$ to denote a small positive constant.
 
-Given $\epsilon$, the function `f(epsilon)` corresponds to the function $f$ described in [1]. Specifically, we define:
+Given $\epsilon$, the function `f(epsilon)` corresponds to the function $f$ described in [1]. Specifically, we have
 
 $$
 f(\epsilon)=\min_{\substack{0<\theta\leq1-\tau, \\ 0<\tau,\rho\leq 1/6}} \\{\frac{1+\zeta}{\theta}+\frac{1-\tau-\theta}{\theta\cdot(1-\tau)}+\frac{3\epsilon}{1-\theta}+\frac{3\rho}{(1-\rho)\cdot(1-\tau)}\\}-1,
 $$
 
-where in [1], $\theta$ was set to $1 - \tau$, but we obtain slightly better results by setting:
+where 
 
 $$
-\theta=\min\\{\frac{1}{\sqrt{\frac{3\varepsilon}{2+\zeta}}+1}, 1-\tau\\},
+\zeta=\frac{3\rho+\tau-4\tau\cdot\rho}{1-\rho}+\frac{\epsilon}{\tau\cdot\rho}\cdot(1-\tau\cdot\rho-\frac{3\rho+\tau-4\tau\cdot\rho}{1-\rho}),
 $$
 
-and
+and $\theta$ was set to $1 - \tau$ in [1], but we obtain slightly better results by setting
 
 $$
-\zeta=\frac{3\rho+\tau-4\tau\cdot\rho}{1-\rho}+\frac{\epsilon}{\tau\cdot\rho}\cdot(1-\tau\cdot\rho-\frac{3\rho+\tau-4\tau\cdot\rho}{1-\rho}).
+\theta=\min\\{\frac{1}{\sqrt{\frac{3\varepsilon}{2+\zeta}}+1}, 1-\tau\\}.
 $$
 
 Since $f$ is defined via an optimization, we compute its value using a grid-based brute-force search, which may introduce a small numerical error.
 
 The file includes two cases: `splittable` and `unsplittable`.
 
-For the `splittable` case, we aim to find the optimal value $\epsilon^\*$ such that:
+For the `splittable` case, we aim to find the optimal value $\epsilon^\*$ such that
 
 $$
 \epsilon^* = \arg\min_{\epsilon > 0} \max\\{ \alpha+1 - 2\epsilon, 2 + f(\epsilon) \\}.
